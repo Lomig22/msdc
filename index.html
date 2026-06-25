@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSDC Entreprise — Rénovation & Second Œuvre · Île-de-France</title>
+<meta name="description" content="MSDC Entreprise — Rénovation et second œuvre en Île-de-France. Peinture, placo, platrerie, finitions. Particuliers et sous-traitance BTP. Références commerciales : Le Five. Devis gratuit.">
+<meta name="theme-color" content="#141414">
+
+<!-- ===== OPEN GRAPH ===== -->
+<meta property="og:title" content="MSDC Entreprise — Votre projet, notre expertise">
+<meta property="og:description" content="Rénovation & second œuvre en Île-de-France. Peinture · Placo · Finitions. Particuliers & sous-traitance BTP.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+
+<style>
+/* ===== IMPORT FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Manrope:wght@400;500;700&display=swap');
+
+/* ===== DESIGN TOKENS ===== */
+:root{
+  --graphite:#141414;   /* fond principal — anthracite profond */
+  --orange:#E85D04;     /* accent signature */
+  --white:#F9F9F9;      /* texte principal */
+  --carbon:#1E1E1E;     /* sections alternées */
+  --steel:#6B7280;      /* texte secondaire */
+  --flame:#FF6B2B;      /* hover states */
+
+  --header-h:74px;
+  --maxw:1180px;
+  --radius:6px;
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+
+  /* Hachures de chantier — lignes croisées 45° / -45° (SVG inline) */
+  --hatch:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M0,22 L22,0' stroke='%23E85D04' stroke-width='0.7' opacity='0.04'/%3E%3Cpath d='M0,0 L22,22' stroke='%23E85D04' stroke-width='0.7' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h);-webkit-text-size-adjust:100%}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--graphite);
+  color:var(--white);
+  line-height:1.65;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+::selection{background:var(--orange);color:var(--white)}
+
+/* ===== TYPO HELPERS ===== */
+h1,h2,h3{font-family:'Exo 2',sans-serif;line-height:1.1}
+.eyebrow{
+  font-family:'Manrope',sans-serif;font-weight:700;color:var(--orange);
+  text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;
+  margin-bottom:14px;display:inline-block;
+}
+.label{
+  font-family:'Manrope',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--orange);font-size:.72rem;
+}
+
+/* ===== LAYOUT ===== */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative}
+.section-carbon{background:var(--carbon)}
+.hatched{background-color:var(--carbon);background-image:var(--hatch);background-size:22px 22px;background-repeat:repeat}
+.hatched-graphite{background-color:var(--graphite);background-image:var(--hatch);background-size:22px 22px;background-repeat:repeat}
+
+.sec-head{max-width:640px;margin-bottom:54px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head h2{
+  font-weight:700;text-transform:uppercase;color:var(--white);
+  font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:.01em;margin-bottom:16px;
+}
+.sec-head p{color:var(--steel);font-size:1.04rem;font-weight:400}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 34px;border-radius:4px;font-size:.96rem;
+  transition:background .25s var(--ease),color .25s var(--ease),
+             border-color .25s var(--ease),transform .25s var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{background:var(--orange);color:var(--white);font-family:'Exo 2',sans-serif;font-weight:700}
+.btn-primary:hover{background:var(--flame);transform:translateY(-2px)}
+.btn-outline-w{background:transparent;border:1px solid var(--white);color:var(--white);font-weight:700}
+.btn-outline-w:hover{background:var(--white);color:var(--graphite);transform:translateY(-2px)}
+.btn-outline-o{background:transparent;border:1px solid var(--orange);color:var(--orange);font-weight:700}
+.btn-outline-o:hover{background:var(--orange);color:var(--white)}
+.btn-full{width:100%}
+
+/* ============================================================= */
+/* ===== HEADER FIXE ===== */
+/* ============================================================= */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--header-h);background:var(--graphite);
+  border-bottom:1px solid rgba(232,93,4,.2);
+  transition:box-shadow .3s var(--ease),background .3s var(--ease);
+}
+.header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);background:rgba(20,20,20,.97);backdrop-filter:blur(8px)}
+.header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+/* Logo */
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{width:38px;height:30px;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-text .l1{font-family:'Exo 2',sans-serif;font-weight:800;color:var(--white);text-transform:uppercase;font-size:1.32rem;letter-spacing:.02em}
+.logo-text .l2{font-family:'Exo 2',sans-serif;font-weight:500;color:var(--orange);text-transform:uppercase;font-size:.62rem;letter-spacing:.12em;margin-top:2px}
+
+/* Nav */
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{font-family:'Manrope',sans-serif;font-weight:500;font-size:.81rem;color:var(--steel);position:relative;transition:color .22s var(--ease)}
+.nav a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--orange);transition:width .25s var(--ease)}
+.nav a:hover{color:var(--orange)}
+.nav a.active{color:var(--orange)}
+.nav a.active::after{width:100%}
+
+.header-cta{display:flex;align-items:center;gap:12px}
+.header-cta .btn{padding:9px 18px;font-size:.82rem;border-radius:4px}
+
+/* Hamburger */
+.burger{display:none;width:30px;height:24px;position:relative;z-index:1100}
+.burger span{position:absolute;left:0;width:100%;height:2px;background:var(--white);border-radius:2px;transition:transform .3s var(--ease),opacity .3s var(--ease),top .3s var(--ease)}
+.burger span:nth-child(1){top:2px}
+.burger span:nth-child(2){top:11px}
+.burger span:nth-child(3){top:20px}
+.burger.open span:nth-child(1){top:11px;transform:rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){top:11px;transform:rotate(-45deg)}
+
+/* Mobile overlay */
+.mobile-menu{
+  position:fixed;inset:0;z-index:1050;background:var(--graphite);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s var(--ease);
+}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu a{font-family:'Exo 2',sans-serif;font-weight:600;font-size:1.5rem;color:var(--white);text-transform:uppercase;padding:12px;transition:color .2s var(--ease)}
+.mobile-menu a:hover{color:var(--orange)}
+.mobile-menu .btn{margin-top:18px;font-size:1rem;padding:14px 40px}
+
+/* ============================================================= */
+/* ===== HERO ===== */
+/* ============================================================= */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:calc(var(--header-h) + 60px);padding-bottom:80px;
+  background-color:var(--graphite);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M0,22 L22,0' stroke='%23E85D04' stroke-width='0.7' opacity='0.03'/%3E%3Cpath d='M0,0 L22,22' stroke='%23E85D04' stroke-width='0.7' opacity='0.03'/%3E%3C/svg%3E");
+  background-size:22px 22px;background-repeat:repeat;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);
+  width:680px;height:680px;max-width:120vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,93,4,.13) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.hero-eyebrow{font-size:.82rem}
+.hero h1{
+  font-weight:800;color:var(--white);line-height:1.05;
+  font-size:clamp(2.7rem,8vw,5rem);letter-spacing:-.01em;margin-bottom:22px;
+}
+.hero h1 .accent{color:var(--orange);display:block}
+.hero-sub{color:var(--steel);font-weight:400;font-size:1.12rem;max-width:580px;margin:0 auto 30px}
+
+/* Bande de crédibilité */
+.cred-band{
+  background:var(--carbon);border:1px solid rgba(232,93,4,.15);
+  padding:14px 24px;border-radius:4px;max-width:560px;margin:0 auto 34px;
+  font-size:.86rem;font-weight:500;color:var(--steel);
+  display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;
+}
+.cred-band strong{color:var(--white);font-weight:700}
+.cred-band .check{color:var(--orange);font-weight:700}
+
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:42px}
+.hero-ctas .btn-primary{font-family:'Exo 2',sans-serif;padding:15px 36px}
+
+/* Badges */
+.hero-badges{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.badge{
+  background:var(--carbon);border-radius:4px;padding:11px 20px;
+  font-size:.86rem;font-weight:500;color:var(--white);
+  display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(249,249,249,.06);
+}
+
+/* ============================================================= */
+/* ===== SERVICES ===== */
+/* ============================================================= */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{
+  background:var(--graphite);border-radius:var(--radius);border-top:3px solid var(--orange);
+  padding:30px 26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.svc-icon{width:46px;height:46px;margin-bottom:20px}
+.svc-icon svg{width:100%;height:100%;stroke:var(--orange);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.svc-card h3{font-weight:600;text-transform:uppercase;color:var(--white);font-size:1.12rem;margin-bottom:12px;letter-spacing:.01em}
+.svc-card p{color:var(--steel);font-size:.94rem;font-weight:400}
+
+/* ============================================================= */
+/* ===== RÉFÉRENCES ===== */
+/* ============================================================= */
+/* Grande card Le Five */
+.five-card{
+  background:var(--carbon);border:1px solid rgba(232,93,4,.3);border-radius:8px;
+  padding:30px;display:flex;gap:34px;align-items:center;margin-bottom:30px;
+}
+.five-text{flex:1 1 50%}
+.five-badge{display:inline-block;margin-bottom:14px}
+.five-text h3{font-weight:700;color:var(--white);font-size:1.55rem;margin-bottom:16px;line-height:1.15}
+.five-text p{color:var(--steel);font-size:1rem;font-weight:400}
+.five-media{flex:1 1 50%;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.five-photo{
+  aspect-ratio:16/9;background:var(--graphite);border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(232,93,4,.12);position:relative;overflow:hidden;
+}
+.five-photo span{font-family:'Exo 2',sans-serif;font-weight:700;color:var(--steel);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase}
+.five-photo::after{content:"PHOTO";position:absolute;bottom:8px;right:10px;font-size:.55rem;letter-spacing:.15em;color:rgba(107,114,128,.5);font-weight:700}
+
+/* 4 cards projets */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:34px}
+.proj-card{
+  background:var(--carbon);border-radius:var(--radius);overflow:hidden;
+  transition:transform .3s var(--ease);
+}
+.proj-card:hover{transform:translateY(-5px)}
+.proj-thumb{
+  aspect-ratio:16/10;background:var(--graphite);
+  display:flex;align-items:center;justify-content:center;position:relative;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M0,22 L22,0' stroke='%23E85D04' stroke-width='0.7' opacity='0.05'/%3E%3Cpath d='M0,0 L22,22' stroke='%23E85D04' stroke-width='0.7' opacity='0.05'/%3E%3C/svg%3E");
+  background-size:22px 22px;
+}
+.proj-thumb svg{width:40px;height:40px;stroke:rgba(232,93,4,.4);stroke-width:1.5;fill:none}
+.proj-label{padding:16px 20px;font-family:'Exo 2',sans-serif;font-weight:600;color:var(--white);font-size:.96rem}
+.ref-cta{text-align:center}
+.ig-link{font-weight:700;color:var(--orange);font-size:1rem;transition:color .2s var(--ease);display:inline-flex;align-items:center;gap:6px}
+.ig-link:hover{color:var(--flame)}
+
+/* ============================================================= */
+/* ===== SOUS-TRAITANCE ===== */
+/* ============================================================= */
+.subc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:40px 0 38px}
+.subc-item{
+  background:var(--graphite);border-radius:var(--radius);padding:26px;
+  border-left:3px solid var(--orange);
+}
+.subc-item .ico{font-size:1.6rem;margin-bottom:12px;display:block}
+.subc-item h3{font-family:'Exo 2',sans-serif;font-weight:600;color:var(--white);font-size:1.1rem;margin-bottom:8px}
+.subc-item p{color:var(--steel);font-size:.92rem}
+.subc-lead{color:var(--steel);font-size:1.06rem;line-height:1.8;max-width:760px}
+
+/* ============================================================= */
+/* ===== COMMENT ÇA MARCHE ===== */
+/* ============================================================= */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:50px}
+.step{position:relative;padding:30px 26px;background:var(--carbon);border-radius:var(--radius)}
+.step-num{
+  font-family:'Exo 2',sans-serif;font-weight:800;font-size:2.6rem;
+  color:transparent;-webkit-text-stroke:1.5px var(--orange);text-stroke:1.5px var(--orange);
+  line-height:1;margin-bottom:16px;
+}
+.step h3{font-weight:600;color:var(--white);font-size:1.18rem;margin-bottom:10px}
+.step p{color:var(--steel);font-size:.94rem}
+
+/* ============================================================= */
+/* ===== TÉMOIGNAGES ===== */
+/* ============================================================= */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.testi{
+  background:var(--graphite);border-radius:var(--radius);border-left:3px solid var(--orange);
+  padding:28px 26px;display:flex;flex-direction:column;
+}
+.testi .quote{color:var(--white);font-size:.98rem;font-weight:400;font-style:italic;margin-bottom:20px;flex:1}
+.testi .who{font-family:'Exo 2',sans-serif;font-weight:600;color:var(--white);font-size:.92rem}
+.testi .role{color:var(--steel);font-size:.82rem;margin-top:2px}
+.testi .stars{color:var(--orange);letter-spacing:2px;margin-top:10px;font-size:.95rem}
+
+/* ============================================================= */
+/* ===== CONTACT ===== */
+/* ============================================================= */
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:34px;margin-top:50px;align-items:start}
+
+/* Bloc gauche — contact direct */
+.contact-direct{
+  background:rgba(232,93,4,.05);border:1px solid rgba(232,93,4,.2);
+  border-radius:8px;padding:30px;
+}
+.contact-direct h3{font-family:'Exo 2',sans-serif;font-weight:700;color:var(--white);font-size:1.3rem;margin-bottom:6px;text-transform:uppercase}
+.contact-direct .sub{color:var(--steel);font-size:.92rem;margin-bottom:22px}
+.phone-cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:var(--orange);color:var(--white);font-family:'Exo 2',sans-serif;font-weight:700;
+  text-transform:uppercase;font-size:1.18rem;padding:18px;border-radius:4px;margin-bottom:24px;
+  transition:background .25s var(--ease),transform .25s var(--ease);letter-spacing:.02em;
+}
+.phone-cta:hover{background:var(--flame);transform:translateY(-2px)}
+.contact-meta{display:flex;flex-direction:column;gap:14px}
+.contact-meta a,.contact-meta div{display:flex;align-items:center;gap:11px;color:var(--white);font-size:.96rem;font-weight:500}
+.contact-meta .mi{color:var(--orange);font-size:1.1rem;width:22px;text-align:center}
+.contact-meta a:hover{color:var(--orange)}
+
+/* Bloc droit — formulaire */
+.form-box{background:var(--carbon);border-radius:8px;padding:30px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:7px}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:none;border-bottom:1px solid rgba(249,249,249,.2);
+  color:var(--white);font-family:'Manrope',sans-serif;font-size:.96rem;padding:11px 0;
+  transition:border-color .25s var(--ease);
+}
+.field textarea{resize:vertical;min-height:90px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--orange)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(107,114,128,.7)}
+.field select{cursor:pointer}
+.field select option{background:var(--carbon);color:var(--white)}
+.form-box .btn-submit{
+  width:100%;background:var(--orange);color:var(--white);font-family:'Exo 2',sans-serif;
+  font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:1rem;
+  padding:16px;border-radius:4px;transition:background .25s var(--ease),transform .25s var(--ease);
+}
+.form-box .btn-submit:hover{background:var(--flame);transform:translateY(-2px)}
+.form-note{color:var(--steel);font-size:.78rem;margin-top:14px;text-align:center}
+
+/* ============================================================= */
+/* ===== FOOTER ===== */
+/* ============================================================= */
+.footer{background:var(--carbon);border-top:2px solid var(--orange);padding:54px 0 30px}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;margin-bottom:36px}
+.footer-brand .fb-name{font-family:'Exo 2',sans-serif;font-weight:800;text-transform:uppercase;color:var(--white);font-size:1.5rem;letter-spacing:.02em}
+.footer-brand .fb-name span{font-weight:500;color:var(--orange)}
+.footer-brand .tagline{color:var(--steel);font-size:.92rem;margin-top:6px}
+.footer-contact{display:flex;flex-direction:column;gap:8px;text-align:right}
+.footer-contact a{font-weight:700;color:var(--orange);font-size:1.05rem;transition:color .2s var(--ease)}
+.footer-contact a:hover{color:var(--flame)}
+.footer-contact .ig{font-size:.92rem;font-weight:500;color:var(--steel)}
+.footer-contact .ig:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(249,249,249,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.footer-bottom .copy{color:var(--steel);font-size:.82rem}
+.footer-bottom .credit{color:var(--steel);font-size:.72rem}
+.footer-bottom .credit a{color:var(--steel);transition:color .2s var(--ease)}
+.footer-bottom .credit a:hover{color:var(--orange)}
+
+/* ============================================================= */
+/* ===== SCROLL REVEAL ===== */
+/* ============================================================= */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============================================================= */
+/* ===== RESPONSIVE ===== */
+/* ============================================================= */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .subc-grid{grid-template-columns:repeat(3,1fr)}
+  .testi-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .nav{display:none}
+  .header-cta{display:none}
+  .burger{display:block}
+  .five-card{flex-direction:column;align-items:stretch;gap:24px}
+  .contact-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  section{padding:72px 0}
+  .services-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .subc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .five-media{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .wrap{padding:0 18px}
+  .hero{padding-top:calc(var(--header-h) + 36px)}
+  .hero-ctas{flex-direction:column;width:100%}
+  .hero-ctas .btn{width:100%}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{flex-direction:column}
+  .footer-contact{text-align:left}
+  .five-card,.form-box,.contact-direct{padding:22px}
+}
+
+/* ===== REDUCED MOTION ===== */
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto !important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.svc-card,.proj-card,.phone-cta{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER FIXE ===== -->
+<header class="header" id="header">
+  <div class="wrap">
+    <a href="#hero" class="logo" aria-label="MSDC Entreprise - Accueil">
+      <svg class="logo-mark" viewBox="0 0 40 32" fill="none" aria-hidden="true">
+        <!-- Toit chevron bicolore inspiré du logo MSDC -->
+        <path d="M3 18 L20 4 L37 18" stroke="#E85D04" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 17 L20 8 L31 17" stroke="#6B7280" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="7" y="20" width="26" height="9" rx="1.5" stroke="#E85D04" stroke-width="2.2"/>
+      </svg>
+      <span class="logo-text">
+        <span class="l1">MSDC</span>
+        <span class="l2">Entreprise</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#services">Nos services</a>
+      <a href="#references">Références</a>
+      <a href="#process">Comment ça marche</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="#soustraitance" class="btn btn-outline-o">Sous-traitance</a>
+      <a href="tel:0684147921" class="btn btn-primary">📞 Devis gratuit</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Nos services</a>
+  <a href="#references">Références</a>
+  <a href="#soustraitance">Sous-traitance</a>
+  <a href="#process">Comment ça marche</a>
+  <a href="#temoignages">Témoignages</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:0684147921" class="btn btn-primary">📞 06 84 14 79 21</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <span class="eyebrow hero-eyebrow reveal">Rénovation &amp; Second Œuvre · Île-de-France</span>
+    <h1 class="reveal">Votre projet.<span class="accent">Notre expertise.</span></h1>
+    <p class="hero-sub reveal">Peinture, placo, platrerie et finitions en Île-de-France. Particuliers et sous-traitance BTP.</p>
+
+    <div class="cred-band reveal">
+      <span class="check">✓</span> Références commerciales :&nbsp;<strong>Le Five</strong>&nbsp;et autres locaux professionnels en IDF
+    </div>
+
+    <div class="hero-ctas reveal">
+      <a href="tel:0684147921" class="btn btn-primary">📞 06 84 14 79 21</a>
+      <a href="#contact" class="btn btn-outline-w">Demander un devis</a>
+    </div>
+
+    <div class="hero-badges reveal">
+      <span class="badge">🏗️ Second Œuvre</span>
+      <span class="badge">🤝 Sous-traitance</span>
+      <span class="badge">📍 Île-de-France</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="hatched" id="services">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Nos services</span>
+      <h2>Tout le second œuvre, en IDF.</h2>
+      <p>De la préparation des murs à la finition finale — un seul interlocuteur pour l'ensemble de vos travaux.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Peinture -->
+      <article class="svc-card reveal">
+        <span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="13" height="7" rx="1"/><path d="M16 6h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-7"/><path d="M12 13v4"/><rect x="9.5" y="17" width="5" height="5" rx="1"/></svg></span>
+        <h3>Peinture</h3>
+        <p>Intérieure, décorative, commerciale. Toutes surfaces, résultat net et durable. Particuliers et locaux professionnels.</p>
+      </article>
+      <!-- Placo -->
+      <article class="svc-card reveal">
+        <span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+        <h3>Placo</h3>
+        <p>Cloisons, plafonds, doublage. Gros et second œuvre, neuf et rénovation. Chantiers toutes échelles.</p>
+      </article>
+      <!-- Platrerie -->
+      <article class="svc-card reveal">
+        <span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3l7 7-9 9-3 1 1-3z"/><path d="M3 21l4-1"/><path d="M12 5l7 7"/></svg></span>
+        <h3>Platrerie</h3>
+        <p>Bandes à joint, enduits, lissage. Préparation soignée pour une finition impeccable.</p>
+      </article>
+      <!-- Finitions -->
+      <article class="svc-card reveal">
+        <span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></span>
+        <h3>Finitions</h3>
+        <p>Ratissage, impression, traitement des supports. Rien n'est laissé au hasard avant la couche finale.</p>
+      </article>
+      <!-- Rénovation complète -->
+      <article class="svc-card reveal">
+        <span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+        <h3>Rénovation complète</h3>
+        <p>Du gros œuvre aux finitions, MSDC Entreprise coordonne l'ensemble de votre projet en IDF.</p>
+      </article>
+      <!-- Sous-traitance -->
+      <article class="svc-card reveal">
+        <span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M2 21v-1a5 5 0 0 1 5-5"/><path d="M22 21v-1a5 5 0 0 0-5-5"/></svg></span>
+        <h3>Sous-traitance</h3>
+        <p>Promoteurs, architectes, maîtres d'œuvre. Nous intervenons pour les professionnels du BTP en IDF.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉFÉRENCES ===== -->
+<section id="references">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Nos références</span>
+      <h2>Des chantiers qui parlent d'eux-mêmes.</h2>
+      <p>MSDC Entreprise intervient pour des locaux commerciaux d'envergure comme pour des particuliers en IDF — avec la même exigence de finitions.</p>
+    </div>
+
+    <!-- Grande card Le Five -->
+    <div class="five-card reveal">
+      <div class="five-text">
+        <span class="label five-badge">Référence commerciale</span>
+        <h3>Le Five — Réseau national de foot indoor</h3>
+        <p>MSDC Entreprise a réalisé les travaux de second œuvre pour des établissements Le Five — chaîne nationale de foot indoor avec plus de 100 centres en France. Peinture murale, finitions, espaces vestiaires et zones communes. Chantiers commerciaux avec exigences de délais et de qualité professionnelles.</p>
+      </div>
+      <div class="five-media">
+        <div class="five-photo"><span>Le Five</span></div>
+        <div class="five-photo"><span>Le Five</span></div>
+      </div>
+    </div>
+
+    <!-- 4 cards projets -->
+    <div class="proj-grid">
+      <article class="proj-card reveal">
+        <div class="proj-thumb"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg></div>
+        <div class="proj-label">Espace design — Peinture décorative</div>
+      </article>
+      <article class="proj-card reveal">
+        <div class="proj-thumb"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg></div>
+        <div class="proj-label">Salle commerciale — Placo &amp; finitions</div>
+      </article>
+      <article class="proj-card reveal">
+        <div class="proj-thumb"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg></div>
+        <div class="proj-label">Appartement IDF — Rénovation complète</div>
+      </article>
+      <article class="proj-card reveal">
+        <div class="proj-thumb"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg></div>
+        <div class="proj-label">Local professionnel — Second œuvre</div>
+      </article>
+    </div>
+
+    <div class="ref-cta reveal">
+      <a href="https://www.instagram.com/msdc_entreprise" target="_blank" rel="noopener" class="ig-link">Voir plus de réalisations sur Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOUS-TRAITANCE ===== -->
+<section class="hatched" id="soustraitance">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sous-traitance</span>
+      <h2>Vous êtes un professionnel du BTP ?</h2>
+    </div>
+    <p class="subc-lead reveal">MSDC Entreprise intervient en sous-traitance pour les promoteurs immobiliers, architectes, maîtres d'œuvre et entreprises générales en Île-de-France. Second œuvre, peinture, placo, finitions — délais respectés, interlocuteur unique, facturation pro.</p>
+
+    <div class="subc-grid">
+      <div class="subc-item reveal">
+        <span class="ico">⚡</span>
+        <h3>Réactivité</h3>
+        <p>Disponibles rapidement sur vos plannings de chantier.</p>
+      </div>
+      <div class="subc-item reveal">
+        <span class="ico">📋</span>
+        <h3>Facturation pro</h3>
+        <p>Devis détaillés, factures conformes.</p>
+      </div>
+      <div class="subc-item reveal">
+        <span class="ico">🤝</span>
+        <h3>Partenariat durable</h3>
+        <p>Un seul prestataire de confiance pour vos besoins.</p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <a href="#contact" class="btn btn-primary">Discuter d'un partenariat</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMENT ÇA MARCHE ===== -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2>Simple, de bout en bout.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Vous nous contactez</h3>
+        <p>Appel ou message. On échange sur votre projet, les surfaces concernées et vos contraintes de délais.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Devis gratuit sous 48h</h3>
+        <p>Déplacement sur site ou estimation à distance. Chiffrage clair, poste par poste, sans surprise.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>On intervient</h3>
+        <p>Équipe qualifiée, chantier propre, finitions soignées. Résultat livré dans les délais convenus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="hatched" id="temoignages">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Témoignages</span>
+      <h2>Ce qu'ils en disent.</h2>
+    </div>
+
+    <div class="testi-grid">
+      <figure class="testi reveal">
+        <blockquote class="quote">« Rénovation complète de notre appartement à Paris. Peinture, placo, finitions. Tout livré dans les délais, résultat impeccable. On recommande. »</blockquote>
+        <figcaption>
+          <div class="who">Arnaud T.</div>
+          <div class="role">Paris 15e</div>
+          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        </figcaption>
+      </figure>
+      <figure class="testi reveal">
+        <blockquote class="quote">« MSDC Entreprise est notre sous-traitant peinture/placo sur plusieurs chantiers IDF. Sérieux, ponctuel, facturation pro. Un partenaire de confiance pour notre agence. »</blockquote>
+        <figcaption>
+          <div class="who">Stéphanie M.</div>
+          <div class="role">Maître d'œuvre · Île-de-France</div>
+          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        </figcaption>
+      </figure>
+      <figure class="testi reveal">
+        <blockquote class="quote">« Travaux dans nos locaux commerciaux, délais très serrés. L'équipe a tenu le planning sans compromis sur la qualité. Très bon travail. »</blockquote>
+        <figcaption>
+          <div class="who">Karim B.</div>
+          <div class="role">Gérant de local commercial · Seine-Saint-Denis</div>
+          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Démarrons votre projet.</h2>
+      <p>Devis gratuit · IDF · Particuliers &amp; professionnels</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Bloc gauche : contact direct -->
+      <div class="contact-direct reveal">
+        <h3>Contact direct</h3>
+        <p class="sub">Le plus rapide pour parler de votre projet.</p>
+        <a href="tel:0684147921" class="phone-cta">📞 06 84 14 79 21</a>
+        <div class="contact-meta">
+          <a href="https://www.instagram.com/msdc_entreprise" target="_blank" rel="noopener"><span class="mi">📷</span> @msdc_entreprise</a>
+          <div><span class="mi">📍</span> Île-de-France — toute la région</div>
+          <div><span class="mi">🤝</span> Sous-traitance BTP disponible</div>
+        </div>
+      </div>
+
+      <!-- Bloc droit : formulaire -->
+      <div class="form-box reveal">
+        <form action="#" method="post" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Prénom &amp; Nom</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom" required>
+            </div>
+            <div class="field">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="vous@email.fr">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="profile">Vous êtes</label>
+              <select id="profile" name="profile">
+                <option value="">Sélectionnez…</option>
+                <option>Particulier</option>
+                <option>Promoteur immobilier</option>
+                <option>Maître d'œuvre</option>
+                <option>Architecte</option>
+                <option>Entreprise générale BTP</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="project">Type de projet</label>
+              <select id="project" name="project">
+                <option value="">Sélectionnez…</option>
+                <option>Peinture</option>
+                <option>Placo</option>
+                <option>Platrerie &amp; Enduit</option>
+                <option>Finitions</option>
+                <option>Rénovation complète</option>
+                <option>Sous-traitance</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="location">Localisation approximative</label>
+            <input type="text" id="location" name="location" placeholder="Ville / département (ex. Paris 15e, 93…)">
+          </div>
+
+          <div class="field">
+            <label for="message">Description</label>
+            <textarea id="message" name="message" placeholder="Décrivez votre projet : surfaces, type de travaux, délais souhaités…"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Envoyer ma demande</button>
+          <p class="form-note">Formulaire de démonstration — à connecter via Web3Forms ou Formspree.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-name">MSDC <span>Entreprise</span></div>
+        <div class="tagline">Rénovation &amp; Second Œuvre · Île-de-France</div>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:0684147921">06 84 14 79 21</a>
+        <a href="https://www.instagram.com/msdc_entreprise" target="_blank" rel="noopener" class="ig">@msdc_entreprise</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copy">© 2026 MSDC Entreprise — Tous droits réservés</div>
+      <div class="credit">Site réalisé par <a href="https://paymentflow.fr" target="_blank" rel="noopener">Payment Flow</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+/* ===== HEADER SCROLL ===== */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 30);
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* ===== MOBILE MENU (HAMBURGER) ===== */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+const toggleMenu = (open) => {
+  burger.classList.toggle('open', open);
+  mobileMenu.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+burger.addEventListener('click', () => toggleMenu(!burger.classList.contains('open')));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+/* ===== SCROLL REVEAL (IntersectionObserver + stagger) ===== */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reveals = document.querySelectorAll('.reveal');
+if (prefersReduced) {
+  reveals.forEach(el => el.classList.add('visible'));
+} else {
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+        const idx = siblings.indexOf(entry.target);
+        entry.target.style.transitionDelay = (Math.max(0, idx) * 0.07) + 's';
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  reveals.forEach(el => io.observe(el));
+}
+
+/* ===== SCROLLSPY ===== */
+const navLinks = Array.from(document.querySelectorAll('.nav a'));
+const sections = navLinks
+  .map(a => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
+
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.5, rootMargin: `-${74}px 0px -40% 0px` });
+sections.forEach(s => spy.observe(s));
+
+/* ===== FORM (DÉMO) ===== */
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const btn = form.querySelector('.btn-submit');
+  const original = btn.textContent;
+  btn.textContent = 'Merci ! Nous vous recontactons rapidement.';
+  btn.style.background = 'var(--flame)';
+  setTimeout(() => { btn.textContent = original; btn.style.background = ''; form.reset(); }, 3500);
+});
+</script>
+</body>
+</html>
